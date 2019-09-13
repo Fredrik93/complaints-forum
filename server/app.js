@@ -8,6 +8,7 @@ var history = require('connect-history-api-fallback');
 
 var camelsController = require('./controllers/camels');
 var postsController = require('./controllers/posts');
+var adminsController = require('./controllers/admins');
 var usersController = require('./controllers/users');
 
 
@@ -43,9 +44,7 @@ app.get('/api', function (req, res) {
 app.use('/api/camels', camelsController);
 app.use('/api/posts', postsController);
 app.use('/api/users', usersController);
-
-
-
+app.use('/api/admins', adminsController);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
