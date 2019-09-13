@@ -1,8 +1,9 @@
 This application is a forum for posting complaints using the MEVN stack.
 
+Contributors: Fredrik Ullman, Mikael Jansson, Moritz Denke
 # Backend and Frontend Template
 
-Latest version: https://git.ita.chalmers.se/courses/dit341/2019/group-01-web (public Github [mirror](https://github.com/dit341/group-00-web))
+Latest version: https://git.ita.chalmers.se/courses/dit341/group-00-web (public Github [mirror](git))
 
 - [Server](./server/README.md) backend
   - [FAQ](./server/docs/FAQ.md)
