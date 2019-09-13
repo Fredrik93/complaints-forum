@@ -8,6 +8,8 @@ var history = require('connect-history-api-fallback');
 
 var camelsController = require('./controllers/camels');
 var postsController = require('./controllers/posts');
+var usersController = require('./controllers/users');
+
 
 
 // Variables
@@ -40,6 +42,8 @@ app.get('/api', function (req, res) {
 });
 app.use('/api/camels', camelsController);
 app.use('/api/posts', postsController);
+app.use('/api/users', usersController);
+
 
 
 
