@@ -10,6 +10,7 @@ var camelsController = require('./controllers/camels');
 var postsController = require('./controllers/posts');
 var adminsController = require('./controllers/admins');
 var usersController = require('./controllers/users');
+var achievementsController = require('./controllers/achievements');
 
 
 
@@ -45,6 +46,8 @@ app.use('/api/camels', camelsController);
 app.use('/api/posts', postsController);
 app.use('/api/users', usersController);
 app.use('/api/admins', adminsController);
+app.use('/api/achievements', achievementsController);
+
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
