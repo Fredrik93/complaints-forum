@@ -11,7 +11,7 @@ Latest version: https://git.ita.chalmers.se/courses/dit341/group-00-web (public 
   - [Troubleshooting](./server/docs/TROUBLESHOOTING.md)
 - [Client](./client/README.md) frontend
 - [Deployment](./docs/DEPLOYMENT.md)
-- [Local Deployment](./docs/LOCAL_DEPLOYMENT.md)
+- [Local Deployment](./docs/LOCAL_DEPLOYMENT.md) lala
 
 ## Requirements
 
