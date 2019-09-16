@@ -19,5 +19,16 @@ router.post('/', function (req, res, next) {
     });
 });
 
+router.get('/:id', function (req, res, next) {
+    var id = req.params.id;
+    Achievement.findById(id, function (err, achievement) {
+        if (err) { return next(err); }
+        if (achievement === null) {
+            return res.status(404).json({ 'message': 'Achievement not found' })
+        }
+        res.json(achievement);
+    });
+});
+
 
 module.exports = router;
