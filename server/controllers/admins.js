@@ -34,7 +34,7 @@ router.delete('/:id', function (req, res, next) {
     });
 });
 
-//Delete the admin with the given ID
+//Delete all admins
 router.delete('/', function (req, res, next) {
     Admin.deleteMany( {}, function (err, admin) {
         if (err) { return next(err); }
