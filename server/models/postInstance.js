@@ -6,4 +6,4 @@ var postInstanceSchema = new Schema({
     timeStamp: { type: Date}
 });
 
-module.exports = mongoose.model('postInstance', postInstanceSchema);
+module.exports = mongoose.model('postInstances', postInstanceSchema);

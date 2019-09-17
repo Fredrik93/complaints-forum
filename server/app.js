@@ -12,7 +12,7 @@ var adminsController = require('./controllers/admins');
 var usersController = require('./controllers/users');
 var achievementsController = require('./controllers/achievements');
 var postInstanceController = require('./controllers/postInstances');
-
+var achievementBoardController = require('./controllers/achievementBoards');
 
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/yourproblem';
@@ -48,6 +48,7 @@ app.use('/api/users', usersController);
 app.use('/api/admins', adminsController);
 app.use('/api/achievements', achievementsController);
 app.use('/api/postInstances', postInstanceController);
+app.use('/api/achievementBoards', achievementBoardController);
 
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
