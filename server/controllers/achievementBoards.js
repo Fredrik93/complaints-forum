@@ -6,7 +6,7 @@ var AchievementBoard = require('../models/achievementBoard');
 router.get('/', function(req, res, next) {
     AchievementBoard.find(function(err, achievementBoard) {
         if (err) { return next(err); }
-        res.json({'camels': achievementBoard});
+        res.json({'achievementsBoards': achievementBoard});
     });
 });
 
