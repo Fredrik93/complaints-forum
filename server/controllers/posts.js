@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Post = require('../models/post');
+var User = require('../models/user');
 
 router.get('/', function (req, res, next) {
     Post.find(function (err, posts) {
@@ -12,8 +13,8 @@ router.get('/', function (req, res, next) {
 //create a new post 
 router.post('/', function (req, res, next) {
     var post = new Post(req.body);
+    id = req.params.id;
     post.save(function (err) {
-
         if (err) {
             return next(err);
         }
@@ -68,8 +69,6 @@ router.put('/:id', function(req, res, next) {
     });
 });
 
-module.exports = router;
-
 //Update a posts values by id
 router.patch('/:id', function(req, res, next) {
     var id = req.params.id;
@@ -84,3 +83,8 @@ router.patch('/:id', function(req, res, next) {
         res.json(post);
     });  
 });
+
+
+module.exports = router;
+
+

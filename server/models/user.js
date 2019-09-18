@@ -5,7 +5,7 @@ var userSchema = new Schema({
     username: { type: String },
     age: { type: Number },
     email: { type: String },
-    password: { type: Number },
+    password: { type: String },
     posts: [{ type: Schema.Types.ObjectId, ref: 'post'}],
     achievements: [{ type: Schema.Types.ObjectId, ref: 'achievement'}]
 });

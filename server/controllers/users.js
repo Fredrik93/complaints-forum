@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Post = require('../models/post');
 
 //Return a list of users 
 router.get('/', function (req, res, next) {
@@ -54,7 +55,6 @@ router.put('/:id', function(req, res, next) {
         res.json(user);
     });
 });
-module.exports = router;
 
 //Update a users values by id
 router.patch('/:id', function(req, res, next) {
@@ -68,7 +68,31 @@ router.patch('/:id', function(req, res, next) {
         user.age = (req.body.age || user.age);
         user.email = (req.body.email || user.email);
         user.password = (req.body.password || user.password);
+        user.achievements = (req.body.achievements || user.achievements);
         user.save();
         res.json(user);
     });  
 });
+
+//create a new post 
+router.post('/:id/', function (req, res, next) {
+    console.log("TEST!!!!!");
+    var id = req.params.id;
+    var post = new Post(req.body);
+    console.log(post);
+    User.findById(id, function(er, foundUser) {
+        console.log(foundUser);
+        
+        if(er) return er;
+        post.save(function(er, savedPost){
+            if(er) return er;
+            foundUser.posts.push(post);
+            //foundUser.post.push(savedPost._id);
+        })
+        console.log(foundUser);
+       res.json(post);
+    });
+});
+
+module.exports = router;
+
