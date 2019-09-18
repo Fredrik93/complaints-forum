@@ -68,7 +68,6 @@ router.patch('/:id', function(req, res, next) {
         user.age = (req.body.age || user.age);
         user.email = (req.body.email || user.email);
         user.password = (req.body.password || user.password);
-        user.achievements = (req.body.achievements || user.achievements);
         user.save();
         res.json(user);
     });  

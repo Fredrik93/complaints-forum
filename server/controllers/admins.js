@@ -21,7 +21,6 @@ router.post('/', function (req, res, next) {
     });
 });
 
-
 //Delete the admin with the given ID
 router.delete('/:id', function (req, res, next) {
     var id = req.params.id;
@@ -46,8 +45,6 @@ router.put('/:id', function(req, res, next) {
     });
 });
 
-module.exports = router;
-
 //Update an admins values by id
 router.patch('/:id', function(req, res, next) {
     var id = req.params.id;
@@ -64,3 +61,5 @@ router.patch('/:id', function(req, res, next) {
         res.json(admin);
     });  
 });
+
+module.exports = router;
