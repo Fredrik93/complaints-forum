@@ -3,6 +3,7 @@ var router = express.Router();
 var Post = require('../models/post');
 var User = require('../models/user');
 
+//Return all posts
 router.get('/', function (req, res, next) {
     Post.find(function (err, posts) {
         if (err) { return next(err); }

@@ -54,7 +54,7 @@ router.delete('/', function (req, res, next) {
     });
 });
 
-//Replaces a post with the given id
+//Replaces a room with the given id
 router.put('/:id', function (req, res, next) {
     var id = req.params.id;
     complaintsRoom.replaceOne({ _id: id }, function (err, complaintsRoom) {
@@ -65,8 +65,6 @@ router.put('/:id', function (req, res, next) {
         res.json(complaintsRoom);
     });
 });
-
-module.exports = router;
 
 //Update a complaintsrooms values by id
 router.patch('/:id', function (req, res, next) {
@@ -81,3 +79,7 @@ router.patch('/:id', function (req, res, next) {
         res.json(complaintsRoom);
     });
 });
+
+
+module.exports = router;
+
