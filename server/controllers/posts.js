@@ -7,6 +7,7 @@ var User = require('../models/user');
 router.get('/', function (req, res, next) {
     Post.find(function (err, posts) {
         if (err) { return next(err); }
+        if (posts.length == 0) { return res.status(404).json({ 'message': 'Posts not found' }); }
         res.json({ 'posts': posts });
     });
 });
