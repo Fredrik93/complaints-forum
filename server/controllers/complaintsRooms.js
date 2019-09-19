@@ -4,8 +4,9 @@ var ComplaintsRoom = require('../models/complaintsRoom');
 
 // Return a list of all complaintsRooms
 router.get('/', function (req, res, next) {
-    ComplaintsRoom.find(function (err, complaintsRoom) {
+    ComplaintsRoom.find(function (err, complaintsRooms) {
         if (err) { return next(err); }
+        if (complaintsRooms.length == 0) { return res.status(404).json({ 'message': 'rooms not found' }); }
         res.json({ 'complaintsRooms': complaintsRoom });
     });
 });

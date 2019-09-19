@@ -6,7 +6,8 @@ var Post = require('../models/post');
 //Return a list of users 
 router.get('/', function (req, res, next) {
     User.find(function (err, users) {
-        if (err) { return next(err); }
+        if (err) {return next(err);}
+        if (users.length == 0) { return res.status(404).json({ 'message': 'Users not found' }); }
         res.json({ 'users': users });
     });
 });
@@ -33,7 +34,6 @@ router.get('/:id', function (req, res, next) {
 });
 //returns all posts of one user 
 router.get('/:id/posts', function (req, res, next) {
-
     var id = req.params.id;
     User.findById(id, function (err, user) {
         if (err) { return next(err); }
@@ -57,7 +57,6 @@ router.get('/:id/posts/:id', function (req, res, next) {
         }
         res.json(post);
     });
-
 });
 
 //Deletes a user with the given id
@@ -101,16 +100,18 @@ router.patch('/:id', function (req, res, next) {
     });
 });
 
-
-
 //create a new post  
 router.post('/:id/', function (req, res, next) {
     var id = req.params.id;
     var post = new Post(req.body);
-    User.findById(id, function (er, foundUser) {
-        if (er) return er;
-        post.save(function (er, savedPost) {
-            if (er) return er;
+    User.findById(id, function (err, foundUser) {
+        console.log(foundUser);
+        if (foundUser == null) {
+            return res.status(404).json({ "message": "User not found" });
+        }
+        if (err) { return next (err); } 
+        post.save(function (err, savedPost) {
+            if (err) return err;
             foundUser.posts.push(savedPost._id);
             foundUser.save();
         });

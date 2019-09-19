@@ -6,6 +6,7 @@ var Admin = require('../models/admin');
 router.get('/', function (req, res, next) {
     Admin.find(function (err, admins) {
         if (err) { return next(err); }
+        if (admins.length == 0) { return res.status(404).json({ 'message': 'Admins not found' }); }
         res.json({ 'admins': admins });
     });
 });

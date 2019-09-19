@@ -6,6 +6,7 @@ var Achievement = require('../models/achievement');
 router.get('/', function (req, res, next) {
     Achievement.find(function (err, achievements) {
         if (err) { return next(err); }
+        if (achievements.length == 0) { return res.status(404).json({ 'message': 'Achievements not found' }); }
         res.json({ 'achievements': achievements });
     });
 });
