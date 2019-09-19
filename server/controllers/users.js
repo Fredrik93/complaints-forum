@@ -47,7 +47,8 @@ router.get('/:id/posts', function (req, res, next) {
     });
 
 });
-//returns one posts of a user 
+
+//Returns one post of a user  by id
 router.get('/:id/posts/:id', function (req, res, next) {
     var id = req.params.id;
     Post.findById(id, function (err, post) {
@@ -56,6 +57,19 @@ router.get('/:id/posts/:id', function (req, res, next) {
             return res.status(404).json({ 'message': 'Post not found' });
         }
         res.json(post);
+    });
+});
+
+//Delete one post of a user by id
+router.delete('/:id/posts/:id', function (req, res, next) {
+    var id = req.params.id;
+    Post.findById(id, function (err, post) {
+        if (err) { return next(err); }
+        if (post === null) {
+            return res.status(404).json({ 'message': 'Post not found' });
+        }
+        res.json({'message' : 'post deleted'});
+        post.delete();
     });
 });
 
@@ -101,7 +115,7 @@ router.patch('/:id', function (req, res, next) {
 });
 
 //create a new post  
-router.post('/:id/', function (req, res, next) {
+router.post('/:id', function (req, res, next) {
     var id = req.params.id;
     var post = new Post(req.body);
     User.findById(id, function (err, foundUser) {
