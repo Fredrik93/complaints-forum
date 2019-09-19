@@ -75,20 +75,15 @@ router.patch('/:id', function(req, res, next) {
 
 //create a new post 
 router.post('/:id/', function (req, res, next) {
-    console.log("TEST!!!!!");
     var id = req.params.id;
     var post = new Post(req.body);
-    console.log(post);
     User.findById(id, function(er, foundUser) {
-        console.log(foundUser);
-        
         if(er) return er;
         post.save(function(er, savedPost){
             if(er) return er;
-            foundUser.posts.push(post);
-            //foundUser.post.push(savedPost._id);
-        })
-        console.log(foundUser);
+            foundUser.posts.push(savedPost._id);
+            foundUser.save();
+        });
        res.json(post);
     });
 });
