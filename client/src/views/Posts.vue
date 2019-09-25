@@ -6,7 +6,9 @@
       <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost"></post-item>
     </b-list-group>
     <form action="/posts">
+      <label for="title">Title :</label>
       <input class="form-group" type="text" name="title" id="titleId" />
+      <label for="title">Text :</label>
       <input type="text" name="text" id="textId" />
       <b-button type="submit" class="form-group" @click="createPost()">Create Post</b-button>
     </form>
