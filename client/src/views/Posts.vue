@@ -1,6 +1,7 @@
 <template>
   <div class="posts">
     <h1>List of {{posts.length}} posts</h1>
+    <b-button type="button" class="createButton" @click="createPost()">Create Post</b-button>
     <b-list-group>
       <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost"></post-item>
     </b-list-group>

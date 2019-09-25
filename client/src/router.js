@@ -27,7 +27,7 @@ export default new Router({
       component: Users
     },
 
-{
+    {
       path: '/posts',
       name: 'posts',
       component: Posts
