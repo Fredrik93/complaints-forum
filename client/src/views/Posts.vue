@@ -5,6 +5,11 @@
     <b-list-group>
       <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost"></post-item>
     </b-list-group>
+    <form action="/posts">
+      <input class="form-group" type="text" name="title" id="titleId" />
+      <input type="text" name="text" id="textId" />
+      <b-button type="submit" class="form-group" @click="createPost()">Create Post</b-button>
+    </form>
   </div>
 </template>
 
@@ -48,9 +53,11 @@ export default {
         })
     },
     createPost() {
+      var title = document.getElementById('titleId').value
+      var text = document.getElementById('textId').value
       var randomPost = {
-        title: this.getRandomColor(),
-        text: this.getRandomInt(10)
+        title: title,
+        text: text
       }
       Api.post('/posts', randomPost)
         .then(response => {
@@ -59,15 +66,6 @@ export default {
         .catch(error => {
           console.log(error)
         })
-    },
-
-    getRandomInt(max) {
-      return Math.floor(Math.random() * max)
-    },
-    getRandomColor() {
-      var colors = ['orange', 'green', 'red', 'blue']
-      var index = this.getRandomInt(colors.length)
-      return colors[index]
     }
   },
 
