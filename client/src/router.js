@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Camels from './views/Camels.vue'
+import Users from './views/Users.vue'
 import Posts from './views/Posts.vue'
 
 Vue.use(Router)
@@ -21,6 +22,12 @@ export default new Router({
       component: Camels
     },
     {
+      path: '/users',
+      name: 'users',
+      component: Users
+    },
+
+{
       path: '/posts',
       name: 'posts',
       component: Posts
