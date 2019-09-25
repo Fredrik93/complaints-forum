@@ -1,7 +1,14 @@
 <template>
   <div class="users">
     <h1>List of {{ users.length }} users</h1>
-    <b-button type="button" class="createButton" @click="createUser()">Create User</b-button>
+    <form action="/users">
+      <label for="username">Username :</label>
+      <input class="form-group" type="text" name="username" id="usernameId" />
+      <label for="age">Age :</label>
+      <input type="age" name="age" id="ageId" />
+      <b-button type="button" class="form-group" @click="createUser()">Create User</b-button>
+    </form>
+    <!-- <b-button type="button" class="createButton" @click="createUser()">Create User</b-button> -->
     <b-list-group>
       <user-item v-for="user in users" :key="user._id" :user="user" @delete-user="deleteUser"></user-item>
     </b-list-group>
@@ -49,9 +56,11 @@ export default {
         })
     },
     createUser() {
+      var username = document.getElementById('usernameId').value
+      var age = document.getElementById('ageId').value
       var randomUser = {
-        username: this.getRandomName(),
-        age: this.getRandomInt(10)
+        username: username,
+        age: age
       }
       Api.post('/users', randomUser)
         .then(response => {

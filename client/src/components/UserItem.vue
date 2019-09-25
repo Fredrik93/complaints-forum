@@ -1,6 +1,6 @@
 <template>
   <b-list-group-item :style="{ color: user.username }">
-    {{ user.username }} age is {{ user.age }}
+    {{ user.username }}, {{ user.age }} years old
     <b-button type="button" class="close" @click="$emit('delete-user', user._id)">&times;</b-button>
   </b-list-group-item>
 </template>
