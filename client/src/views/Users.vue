@@ -30,6 +30,7 @@ export default {
         })
         .catch(error => {
           this.users = []
+
           console.log(error)
         })
         .then(() => {
