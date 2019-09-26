@@ -1,78 +1,98 @@
 <template>
   <div class="posts">
-    <h1>List of {{posts.length}} posts</h1>
-    <b-button type="button" class="createButton" @click="createPost()">Create Post</b-button>
+    <div class="jumbotron">
+      <h1>What's New ?</h1>
+    </div>
     <b-list-group>
       <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost"></post-item>
     </b-list-group>
-    <form action="/posts">
+
+    <form class="postform" action="/posts">
       <label for="title">Title :</label>
       <input class="form-group" type="text" name="title" id="titleId" />
       <label for="title">Text :</label>
-      <input type="text" name="text" id="textId" />
-      <b-button type="submit" class="form-group" @click="createPost()">Create Post</b-button>
+      <input class="form-group" type="text" name="text" id="textId" />
+
+      <input type="submit" id="postbtn" class="form-group btn-success btn-sm" @click="createPost()" />
     </form>
   </div>
 </template>
 
 <script>
-import { Api } from '@/Api'
-import PostItem from '@/components/PostItem'
+import { Api } from "@/Api";
+import PostItem from "@/components/PostItem";
 
 export default {
-  name: 'Posts',
+  name: "Posts",
   data() {
     return {
       posts: []
-    }
+    };
   },
   mounted() {
-    this.getPosts()
+    this.getPosts();
   },
   methods: {
     getPosts() {
-      Api.get('posts')
+      Api.get("posts")
         .then(response => {
-          this.posts = response.data.posts
+          this.posts = response.data.posts;
         })
         .catch(error => {
-          this.posts = []
-          console.log(error)
+          this.posts = [];
+          console.log(error);
         })
         .then(() => {
           // This code is always executed (after success or error).
-        })
+        });
     },
     deletePost(id) {
       Api.delete(`/posts/${id}`)
         .then(response => {
-          console.log(response.data.message)
-          var index = this.posts.findIndex(post => post._id === id)
-          this.posts.splice(index, 1)
+          console.log(response.data.message);
+          var index = this.posts.findIndex(post => post._id === id);
+          this.posts.splice(index, 1);
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
     createPost() {
-      var title = document.getElementById('titleId').value
-      var text = document.getElementById('textId').value
+      var title = document.getElementById("titleId").value;
+      var text = document.getElementById("textId").value;
       var randomPost = {
         title: title,
         text: text
-      }
-      Api.post('/posts', randomPost)
+      };
+      Api.post("/posts", randomPost)
         .then(response => {
-          this.posts.push(response.data)
+          this.posts.push(response.data);
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
   },
 
   components: {
     PostItem
   }
-}
+};
 </script>
+
+<style >
+.posts {
+  align-content: center;
+  padding: 0em 20em 0em 20em;
+}
+#postbtn {
+  margin-left: 2em;
+}
+.postform {
+  display: block;
+}
+#textId {
+  width: 30em;
+  height: 10em;
+}
+</style>
