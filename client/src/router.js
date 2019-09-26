@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Camels from './views/Camels.vue'
 import Users from './views/Users.vue'
 import Posts from './views/Posts.vue'
+import NewPost from './views/NewPost.vue'
 
 Vue.use(Router)
 
@@ -31,6 +32,12 @@ export default new Router({
       path: '/posts',
       name: 'posts',
       component: Posts
+    },
+    {
+      path: '/NewPost',
+      name: 'newPost',
+      component: NewPost
     }
+
   ]
 })
