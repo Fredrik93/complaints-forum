@@ -1049,30 +1049,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Get all postInstances",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/postInstances",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"postInstances"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -1122,13 +1098,13 @@
 	],
 	"variable": [
 		{
-			"id": "f8d51f14-2b69-4f7d-be5f-305cab8f2263",
+			"id": "02a04a78-d3ab-48d9-9975-d1a9672727e4",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
-			"id": "4d9a539a-3b18-45d0-aa55-3fffbf14f0d9",
+			"id": "8b2535ae-c96b-46a2-b995-aaea05aa02ed",
 			"value": "",
 			"type": "string",
 			"disabled": true
