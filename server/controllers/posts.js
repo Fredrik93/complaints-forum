@@ -72,7 +72,7 @@ router.delete('/:id', function (req, res, next) {
 //Replaces a post with the given id
 router.put('/:id', function (req, res, next) {
     var id = req.params.id;
-    Post.replaceOne({ _id: id }, function (err, post) {
+    Post.replaceOne({ _id: id }, { changed: req.body.changed, description: req.body.description }, function (err, post) {
         if (err) { return next(err); }
         if (post === null) {
             return res.status(404).json({ 'message': 'Post not found' });

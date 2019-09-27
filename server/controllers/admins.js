@@ -49,7 +49,7 @@ router.delete('/:id', function (req, res, next) {
 //Replaces an admin with the given id
 router.put('/:id', function (req, res, next) {
     var id = req.params.id;
-    Admin.replaceOne({ _id: id }, function (err, admin) {
+    Admin.replaceOne({ _id: id }, { changed: req.body.changed, description: req.body.description }, function (err, admin) {
         if (err) { return next(err); }
         if (admin === null) {
             return res.status(404).json({ 'message': 'Admin not found' });
@@ -61,7 +61,7 @@ router.put('/:id', function (req, res, next) {
 //Update an admins values by id
 router.patch('/:id', function (req, res, next) {
     var id = req.params.id;
-    Admin.findById(id, function (err, user) {
+    Admin.findById(id, function (err, admin) {
         if (err) { return next(err); }
         if (admin == null) {
             return res.status(404).json({ "message": "Admin not found" });
