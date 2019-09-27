@@ -11,9 +11,9 @@
 
 <script>
 export default {
-  name: "post-item",
-  props: ["post"]
-};
+  name: 'post-item',
+  props: ['post']
+}
 </script>
 
 <style >
