@@ -355,6 +355,110 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Display posts of one user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/posts/{{userPost_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"posts",
+								"{{userPost_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Display all posts from users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete users post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/posts/{{userPost_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"posts",
+								"{{userPost_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"Updated User\",\n\t\"age\": 23,\n\t\"email\": \"fred@live.se\",\n\t\"password\": 1234,\n\t\"posts\": [],\n\t\"achievments\": []\n\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -455,6 +559,29 @@
 					"name": "Update AchievementBoard",
 					"request": {
 						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/achievementBoards/{{achievementBoard_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"achievementBoards",
+								"{{achievementBoard_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one achievementBoard",
+					"request": {
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -592,6 +719,115 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Display sorted posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/sorted",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"sorted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all posts",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"5d8e1c9157db3f6e2c39bd26\",\n    \"title\": \"Replaced  post\",\n    \"text\": \"new text\",\n    \"__v\": 0\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/{{post_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{post_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"5d8e1c9157db3f6e2c39bd26\",\n    \"title\": \"Updated post\",\n    \"text\": \"some text\",\n    \"__v\": 0\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/{{post_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{post_id}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -699,6 +935,115 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete one room",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/complaintsRooms/{{complaintsRoom_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"complaintsRooms",
+								"{{complaintsRoom_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all rooms",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/complaintsRooms/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"complaintsRooms",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace one room",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\n    \"users\":[],\n    \"maxUsers\":10,\n    \"userCount\":15\n    }"
+						},
+						"url": {
+							"raw": "{{host}}/api/complaintsRooms/{{complaintsRoom_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"complaintsRooms",
+								"{{complaintsRoom_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a room",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\n    \"users\":[],\n    \"maxUsers\":90,\n    \"userCount\":15\n    }"
+						},
+						"url": {
+							"raw": "{{host}}/api/complaintsRooms/{{complaintsRoom_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"complaintsRooms",
+								"{{complaintsRoom_id}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -780,6 +1125,89 @@
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/admins/{{admin_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"admins",
+								"{{admin_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/admins/{{admin_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"admins",
+								"{{admin_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Admin",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userName\":\"NewAdminName\",\n\t\"age\": 26,\n\t\"email\": \"fredrikullman@live.se\",\n\t\"password\": \"1234\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/admins/{{admin_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"admins",
+								"{{admin_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace Admin",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userName\":\"ReplacedTheWholeThing\",\n\t\"age\": 26,\n\t\"email\": \"fredrikullman@live.se\",\n\t\"password\": \"1234\"\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/admins/{{admin_id}}",
@@ -982,7 +1410,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"position\": \"2\",\n\t\"color\": \"newColor\"\n}"
+							"raw": "{\n\t\"position\": \"2\",\n\t\"color\": \"newestColor\"\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/camels/{{camel_id}}",
@@ -1049,6 +1477,107 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get all instances",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/postInstances",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"postInstances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one instance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/postInstances/{{postInstance_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"postInstances",
+								"{{postInstance_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one instance",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/postInstances/{{postInstance_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"postInstances",
+								"{{postInstance_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace one instance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"5d8e1bd857db3f6e2c39bd23\",\n    \"timeStamp\": \"saturyay 27/10-2019\",\n    \"__v\": 0\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/postInstances/{{postInstance_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"postInstances",
+								"{{postInstance_id}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1098,13 +1627,13 @@
 	],
 	"variable": [
 		{
-			"id": "02a04a78-d3ab-48d9-9975-d1a9672727e4",
+			"id": "88f0d1f5-364f-423d-9771-f712855cb34d",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
-			"id": "8b2535ae-c96b-46a2-b995-aaea05aa02ed",
+			"id": "5279609a-13e1-4049-a8cd-bd8b45633e12",
 			"value": "",
 			"type": "string",
 			"disabled": true
