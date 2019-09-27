@@ -4,71 +4,71 @@
       <h1>What's New ?</h1>
     </div>
     <b-list-group>
-      <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost"></post-item>
+      <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost()"></post-item>
     </b-list-group>
   </div>
 </template>
 
 <script>
-import { Api } from "@/Api";
-import PostItem from "@/components/PostItem";
+import { Api } from '@/Api'
+import PostItem from '@/components/PostItem'
 
 export default {
-  name: "Posts",
+  name: 'Posts',
   data() {
     return {
       posts: []
-    };
+    }
   },
   mounted() {
-    this.getPosts();
+    this.getPosts()
   },
   methods: {
     getPosts() {
-      Api.get("posts")
+      Api.get('posts')
         .then(response => {
-          this.posts = response.data.posts;
+          this.posts = response.data.posts
         })
         .catch(error => {
-          this.posts = [];
-          console.log(error);
+          this.posts = []
+          console.log(error)
         })
         .then(() => {
           // This code is always executed (after success or error).
-        });
+        })
     },
     deletePost(id) {
       Api.delete(`/posts/${id}`)
         .then(response => {
-          console.log(response.data.message);
-          var index = this.posts.findIndex(post => post._id === id);
-          this.posts.splice(index, 1);
+          console.log(response.data.message)
+          var index = this.posts.findIndex(post => post._id === id)
+          this.posts.splice(index, 1)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
     createPost() {
-      var title = document.getElementById("titleId").value;
-      var text = document.getElementById("textId").value;
+      var title = document.getElementById('titleId').value
+      var text = document.getElementById('textId').value
       var randomPost = {
         title: title,
         text: text
-      };
-      Api.post("/posts", randomPost)
+      }
+      Api.post('/posts', randomPost)
         .then(response => {
-          this.posts.push(response.data);
+          this.posts.push(response.data)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
   },
 
   components: {
     PostItem
   }
-};
+}
 </script>
 
 <style >
