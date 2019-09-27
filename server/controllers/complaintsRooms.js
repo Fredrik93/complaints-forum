@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
     ComplaintsRoom.find(function (err, complaintsRooms) {
         if (err) { return next(err); }
         if (complaintsRooms.length == 0) { return res.status(404).json({ 'message': 'rooms not found' }); }
-        res.json({ 'complaintsRooms': complaintsRoom });
+        res.json({ 'complaintsRooms': complaintsRooms });
     });
 });
 
@@ -46,7 +46,7 @@ router.delete('/:id', function (req, res, next) {
 
 //Delete all rooms
 router.delete('/', function (req, res, next) {
-    ComplaintsRoom.deleteMany( {}, function (err, complaintsRoom) {
+    ComplaintsRoom.deleteMany({}, function (err, complaintsRoom) {
         if (err) { return next(err); }
         if (complaintsRoom === null) {
             return res.status(404).json({ 'message': 'Rooms not found' });
