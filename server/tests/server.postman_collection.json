@@ -155,12 +155,10 @@
 							"raw": "{\n    \"name\": \"changed\",\n    \"description\": \"You've posted one fredrik posts! \",\n    \"__v\": 0\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/achievements/{{achievement_id}}",
-							"protocol": "http",
+							"raw": "{{host}}/api/achievements/{{achievement_id}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"achievements",
@@ -633,12 +631,10 @@
 							"raw": "\n    {\n    \"users\":[],\n    \"maxUsers\":30,\n    \"userCount\":25\n    }"
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/complaintsRooms",
-							"protocol": "http",
+							"raw": "{{host}}/api/complaintsRooms",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"api",
 								"complaintsRooms"
@@ -1126,13 +1122,13 @@
 	],
 	"variable": [
 		{
-			"id": "dbd03367-d0c3-46c2-98b7-69761e8cf8a5",
+			"id": "f8d51f14-2b69-4f7d-be5f-305cab8f2263",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
-			"id": "f7c90150-cd76-4df0-8269-db4422882428",
+			"id": "4d9a539a-3b18-45d0-aa55-3fffbf14f0d9",
 			"value": "",
 			"type": "string",
 			"disabled": true
