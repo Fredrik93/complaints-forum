@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var ComplaintsRoom = require('../models/complaintsRoom');
 
-// Return a list of all complaintsRooms
+// Return a list of all complaintRooms
 router.get('/', function (req, res, next) {
     ComplaintsRoom.find(function (err, complaintsRooms) {
         if (err) { return next(err); }
