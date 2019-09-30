@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var ComplaintsRoom = require('../models/complaintsRoom');
+var Post = require('../models/post');
 
-// Return a list of all complaintsRooms
+// Return a list of all complaintRooms
 router.get('/', function (req, res, next) {
     ComplaintsRoom.find(function (err, complaintsRooms) {
         if (err) { return next(err); }
         if (complaintsRooms.length == 0) { return res.status(404).json({ 'message': 'rooms not found' }); }
-        res.json({ 'complaintsRooms': complaintsRoom });
+        res.json({ 'complaintsRooms': complaintsRooms });
     });
 });
 
@@ -46,7 +47,7 @@ router.delete('/:id', function (req, res, next) {
 
 //Delete all rooms
 router.delete('/', function (req, res, next) {
-    ComplaintsRoom.deleteMany( {}, function (err, complaintsRoom) {
+    ComplaintsRoom.deleteMany({}, function (err, complaintsRoom) {
         if (err) { return next(err); }
         if (complaintsRoom === null) {
             return res.status(404).json({ 'message': 'Rooms not found' });
@@ -58,7 +59,7 @@ router.delete('/', function (req, res, next) {
 //Replaces a room with the given id
 router.put('/:id', function (req, res, next) {
     var id = req.params.id;
-    complaintsRoom.replaceOne({ _id: id }, function (err, complaintsRoom) {
+    ComplaintsRoom.replaceOne({ _id: id }, { changed: req.body.changed, description: req.body.description }, function (err, complaintsRoom) {
         if (err) { return next(err); }
         if (complaintsRoom === null) {
             return res.status(404).json({ 'message': 'Room not found' });
@@ -81,6 +82,23 @@ router.patch('/:id', function (req, res, next) {
     });
 });
 
-
+//create a new post  
+router.post('/:id', function (req, res, next) {
+    var id = req.params.id;
+    var post = new Post(req.body);
+    ComplaintsRoom.findById(id, function (err, foundRoom) {
+        console.log(foundRoom);
+        if (foundRoom == null) {
+            return res.status(404).json({ "message": "Room not found" });
+        }
+        if (err) { return next(err); }
+        post.save(function (err, savedPost) {
+            if (err) return err;
+            foundRoom.posts.push(savedPost._id);
+            foundRoom.save();
+        });
+        res.json(post);
+    });
+});
 module.exports = router;
 
