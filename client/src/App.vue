@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link>|
       <router-link to="/camels">Camels</router-link>|
       <router-link to="/users">Users</router-link>|
-      <router-link to="/posts">Posts</router-link>
+      <router-link to="/posts">Posts</router-link>|
+      <router-link to="/rooms">Rooms</router-link>
       <router-link
         tag="button"
         to="/newPost"

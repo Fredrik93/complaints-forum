@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var ComplaintsRoom = require('../models/complaintsRoom');
+var Post = require('../models/post');
 
 // Return a list of all complaintRooms
 router.get('/', function (req, res, next) {
@@ -81,6 +82,23 @@ router.patch('/:id', function (req, res, next) {
     });
 });
 
-
+//create a new post  
+router.post('/:id', function (req, res, next) {
+    var id = req.params.id;
+    var post = new Post(req.body);
+    ComplaintsRoom.findById(id, function (err, foundRoom) {
+        console.log(foundRoom);
+        if (foundRoom == null) {
+            return res.status(404).json({ "message": "Room not found" });
+        }
+        if (err) { return next(err); }
+        post.save(function (err, savedPost) {
+            if (err) return err;
+            foundRoom.posts.push(savedPost._id);
+            foundRoom.save();
+        });
+        res.json(post);
+    });
+});
 module.exports = router;
 
