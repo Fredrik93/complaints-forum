@@ -3,6 +3,12 @@
         <b-jumbotron>
             <h1>Something to complain about?</h1>
         </b-jumbotron>
+        <router-link
+            tag="button"
+            to="/newPost"
+            id="postBtn"
+            class="btn btn-outline-primary"
+        >New post</router-link>
     </div>
 </template>
 
