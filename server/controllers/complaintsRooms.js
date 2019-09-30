@@ -33,6 +33,25 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+// Return a list of all posts in a complaintsRoom
+router.get('/:id/posts', function (req, res, next) {
+    var id = req.params.id;
+    ComplaintsRoom.findById(id, function (err, room) {
+        if (err) { return next(err); }
+        if (room === null) {
+            return res.status(404).json({ 'message': 'Room not found' });
+        }
+        Post.find(function (err, posts) {
+            if (err) { return next(err); }
+            res.json({ 'posts': posts });
+        });
+    });
+});
+
+
+//TODO: add return single post
+
+
 // Delete the Rooms with the given ID
 router.delete('/:id', function (req, res, next) {
     var id = req.params.id;

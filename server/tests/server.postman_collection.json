@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "941fa69a-cdb4-4f2b-82e3-7091766a303b",
+		"_postman_id": "a9aa4778-e67a-4f27-b13c-422bc4d79960",
 		"name": "Server",
 		"description": "server side postman tests for web & app development\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -78,12 +78,8 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "{{host}}/api/achievements?=\n",
+							"raw": "{{host}}/api/achievements?=",
 							"host": [
 								"{{host}}"
 							],
@@ -203,7 +199,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Users",
@@ -292,10 +289,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/users/{{user_id}}",
 							"host": [
@@ -357,14 +350,10 @@
 					"response": []
 				},
 				{
-					"name": "Display posts of one user",
+					"name": "Display specific post of specific user",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/users/{{user_id}}/posts/{{userPost_id}}",
 							"host": [
@@ -382,14 +371,10 @@
 					"response": []
 				},
 				{
-					"name": "Display all posts from users",
+					"name": "Display all posts from a user",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/users/{{user_id}}/posts",
 							"host": [
@@ -460,7 +445,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "AchievementBoards",
@@ -515,10 +501,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/achievementBoards",
 							"host": [
@@ -583,10 +565,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/achievementBoards/{{achievementBoard_id}}",
 							"host": [
@@ -601,7 +579,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Posts",
@@ -657,10 +636,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/posts/{{post_id}}",
 							"host": [
@@ -680,10 +655,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/posts",
 							"host": [
@@ -725,10 +696,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/posts/sorted",
 							"host": [
@@ -829,7 +796,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "complaintsRoom",
@@ -884,10 +852,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/complaintsRooms",
 							"host": [
@@ -918,10 +882,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/complaintsRooms/{{complaintsRoom_id}}",
 							"host": [
@@ -1044,8 +1004,80 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create a post in a room",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c023f49-85db-4e1e-a7bc-f73ee3767526",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"var roomPostId = jsonData._id",
+									"pm.environment.set(\"roomPost_id\", roomPostId);",
+									"",
+									"var getComplaintsRoomId = pm.variables.get(\"roomPost_id\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\" : \"first post\",\n\t\"text\" : \"some text lorem \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/complaintsRooms/{{complaintsRoom_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"complaintsRooms",
+								"{{complaintsRoom_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all posts of a room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/complaintsRooms/{{complaintsRoom_id}}/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"complaintsRooms",
+								"{{complaintsRoom_id}}",
+								"posts"
+							]
+						}
+					},
+					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Admins",
@@ -1100,10 +1132,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/admins",
 							"host": [
@@ -1122,10 +1150,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/admins/{{admin_id}}",
 							"host": [
@@ -1223,7 +1247,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Camels",
@@ -1378,7 +1403,7 @@
 							"raw": "{\n\"username\":\"fredrik\",\n\"age\":26,\n\"email\":\"lalala\",\n\"posts\": [],\n\"achievements\":[]\n\n}"
 						},
 						"url": {
-							"raw": "{{host}}/api/camels?=\n\n",
+							"raw": "{{host}}/api/camels?=",
 							"host": [
 								"{{host}}"
 							],
@@ -1426,7 +1451,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "postInstance",
@@ -1483,10 +1509,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/postInstances",
 							"host": [
@@ -1505,10 +1527,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/postInstances/{{postInstance_id}}",
 							"host": [
@@ -1579,17 +1597,14 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Get standard api message",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "{{host}}/api",
 					"host": [
@@ -1634,9 +1649,11 @@
 		},
 		{
 			"id": "5279609a-13e1-4049-a8cd-bd8b45633e12",
+			"key": "5279609a-13e1-4049-a8cd-bd8b45633e12",
 			"value": "",
 			"type": "string",
 			"disabled": true
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
