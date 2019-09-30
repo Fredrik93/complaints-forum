@@ -5,6 +5,7 @@ import Camels from './views/Camels.vue'
 import Users from './views/Users.vue'
 import Posts from './views/Posts.vue'
 import NewPost from './views/NewPost.vue'
+import Rooms from './views/Rooms.vue'
 
 Vue.use(Router)
 
@@ -27,7 +28,6 @@ export default new Router({
       name: 'users',
       component: Users
     },
-
     {
       path: '/posts',
       name: 'posts',
@@ -37,7 +37,11 @@ export default new Router({
       path: '/NewPost',
       name: 'newPost',
       component: NewPost
+    },
+    {
+      path: '/rooms',
+      name: 'room',
+      component: Rooms
     }
-
   ]
 })
