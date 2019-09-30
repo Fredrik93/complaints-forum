@@ -4,7 +4,7 @@
       <h1>What's New ?</h1>
     </div>
     <b-list-group>
-      <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost()"></post-item>
+      <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost"></post-item>
     </b-list-group>
   </div>
 </template>
