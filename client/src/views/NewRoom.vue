@@ -1,17 +1,26 @@
 <template>
-  <div class="rooms">
-    <div class="jumbotron">
-      <h1>Browse Rooms</h1>
+  <div class>
+    <div id="room">
+      <h1>Create new room</h1>
+
+      <b-container>
+        <form class="postform" action="/rooms">
+          <b-form-input name="name" placeholder="Enter a room name" id="nameId"></b-form-input>
+
+          <input
+            type="submit"
+            id="roombtn"
+            class="form-group btn-success btn-lg"
+            @click="createRoom()"
+          />
+        </form>
+      </b-container>
     </div>
-    <b-list-group>
-      <room-item v-for="room in rooms" :key="room._id" :room="room" @delete-room="deleteRoom"></room-item>
-    </b-list-group>
   </div>
 </template>
 
 <script>
 import { Api } from '@/Api'
-import RoomItem from '@/components/RoomItem'
 
 export default {
   name: 'Rooms',
@@ -61,27 +70,31 @@ export default {
           console.log(error)
         })
     }
-  },
-
-  components: {
-    RoomItem
   }
 }
 </script>
 
 <style >
-.rooms {
-  align-content: center;
-  padding: 0em 20em 0em 20em;
+h1 {
+  margin-bottom: 2em;
+}
+#room {
+  margin-top: 10em;
 }
 #roombtn {
-  margin-left: 2em;
+  margin-top: 2em;
 }
 .postform {
   display: block;
 }
 #textId {
+  margin: auto;
+  margin-top: 10px;
+  /* width: 30em;
+  height: 10em; */
+}
+#titleId {
   width: 30em;
-  height: 10em;
+  margin: auto;
 }
 </style>
