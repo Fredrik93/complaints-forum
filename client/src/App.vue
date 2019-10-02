@@ -12,6 +12,12 @@
         id="newPostbtn"
         class="btn btn-outline-primary"
       >New post</router-link>
+      <router-link
+        tag="button"
+        to="/newRoom"
+        id="newRoombtn"
+        class="btn btn-outline-primary"
+      >New room</router-link>
     </div>
     <router-view />
   </div>
@@ -38,6 +44,9 @@
   color: #42b983;
 }
 #newPostbtn {
+  float: right;
+}
+#newRoombtn {
   float: right;
 }
 </style>
