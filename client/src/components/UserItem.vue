@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import UserItem from '@/components/UserItem';
+import UserItem from '@/components/UserItem'
 
 export default {
   name: 'user-item',

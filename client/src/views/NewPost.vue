@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import { Api } from '@/Api';
-import UserItem from '@/components/UserItem';
+import { Api } from '@/Api'
+import UserItem from '@/components/UserItem'
 
 export default {
   props: 'users',
@@ -95,7 +95,7 @@ export default {
         text: text
       }
 
-      Api.post('/users/5d944a751043131a63b7c6cf', randomPost)
+      Api.post('/posts', randomPost)
         .then(response => {
           this.posts.push(response.data)
           console.log(data)
