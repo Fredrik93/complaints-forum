@@ -1,5 +1,5 @@
 <template>
-  <div class="posts">
+  <div class="posts col-md">
     <div class="jumbotron">
       <h1>What's New ?</h1>
     </div>

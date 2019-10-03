@@ -1,5 +1,5 @@
 <template>
-  <div class="rooms">
+  <div class="rooms col-md">
     <div class="jumbotron">
       <h1>Browse Rooms</h1>
     </div>
@@ -10,63 +10,63 @@
 </template>
 
 <script>
-import { Api } from '@/Api'
-import RoomItem from '@/components/RoomItem'
+import { Api } from "@/Api";
+import RoomItem from "@/components/RoomItem";
 
 export default {
-  name: 'Rooms',
+  name: "Rooms",
   data() {
     return {
       rooms: []
-    }
+    };
   },
   mounted() {
-    this.getRooms()
+    this.getRooms();
   },
   methods: {
     getRooms() {
-      Api.get('rooms')
+      Api.get("rooms")
         .then(response => {
-          this.rooms = response.data.rooms
+          this.rooms = response.data.rooms;
         })
         .catch(error => {
-          this.rooms = []
-          console.log(error)
+          this.rooms = [];
+          console.log(error);
         })
         .then(() => {
           // This code is always executed (after success or error).
-        })
+        });
     },
     deleteRoom(id) {
       Api.delete(`/rooms/${id}`)
         .then(response => {
-          console.log(response.data.message)
-          var index = this.rooms.findIndex(room => room._id === id)
-          this.rooms.splice(index, 1)
+          console.log(response.data.message);
+          var index = this.rooms.findIndex(room => room._id === id);
+          this.rooms.splice(index, 1);
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
     createRoom() {
-      var name = document.getElementById('nameId').value
+      var name = document.getElementById("nameId").value;
       var randomRoom = {
         name: name
-      }
-      Api.post('/rooms', randomRoom)
+      };
+      Api.post("/rooms", randomRoom)
         .then(response => {
-          this.rooms.push(response.data)
+          this.rooms.push(response.data);
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
   },
 
   components: {
     RoomItem
   }
-}
+};
 </script>
 
 <style >
