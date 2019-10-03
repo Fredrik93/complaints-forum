@@ -22,93 +22,93 @@
 </template>
 
 <script>
-import { Api } from '@/Api'
-import UserItem from '@/components/UserItem'
+import { Api } from "@/Api";
+import UserItem from "@/components/UserItem";
 
 export default {
-  props: 'users',
-  name: 'Posts',
+  props: "users",
+  name: "Posts",
   data() {
     return {
       posts: [],
       users: []
-    }
+    };
   },
   mounted() {
-    this.getPosts()
-    this.getUsers()
+    this.getPosts();
+    this.getUsers();
   },
   methods: {
     getPosts() {
-      Api.get('posts')
+      Api.get("posts")
         .then(response => {
-          this.posts = response.data.posts
+          this.posts = response.data.posts;
         })
         .catch(error => {
-          this.posts = []
-          console.log(error)
+          this.posts = [];
+          console.log(error);
         })
         .then(() => {
           // This code is always executed (after success or error).
-        })
+        });
     },
     getUsers() {
-      Api.get('users')
+      Api.get("users")
         .then(response => {
-          this.users = response.data.users
+          this.users = response.data.users;
         })
         .catch(error => {
-          this.users = []
-          console.log(error)
+          this.users = [];
+          console.log(error);
         })
         .then(() => {
           // This code is always executed (after success or error).
-        })
+        });
     },
     getUser(id) {
       Api.get(`/users/${id}`)
         .then(response => {
-          console.log(response.data.message)
-          var index = this.users.findIndex(users => users._id === id)
-          this.users = response.data.users
+          console.log(response.data.message);
+          var index = this.users.findIndex(users => users._id === id);
+          this.users = response.data.users;
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
     deletePost(id) {
       Api.delete(`/posts/${id}`)
         .then(response => {
-          console.log(response.data.message)
-          var index = this.posts.findIndex(post => post._id === id)
-          this.posts.splice(index, 1)
+          console.log(response.data.message);
+          var index = this.posts.findIndex(post => post._id === id);
+          this.posts.splice(index, 1);
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
     createPost() {
-      var title = document.getElementById('titleId').value
-      var text = document.getElementById('textId').value
+      var title = document.getElementById("titleId").value;
+      var text = document.getElementById("textId").value;
       var randomPost = {
         title: title,
         text: text
-      }
+      };
 
-      Api.post('/posts', randomPost)
+      Api.post("/posts", randomPost)
         .then(response => {
-          this.posts.push(response.data)
-          console.log(data)
+          this.posts.push(response.data);
+          console.log(data);
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
   },
   components: {
     UserItem
   }
-}
+};
 </script>
 
 <style >
