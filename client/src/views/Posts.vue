@@ -3,7 +3,7 @@
     <div class="jumbotron">
       <h1>What's New ?</h1>
     </div>
-
+    <b-button type="button" @click="deleteAll()">Delete All</b-button>    
     <b-list-group>
       <post-item
         v-for="post in posts"
@@ -39,10 +39,7 @@ export default {
         .catch(error => {
           this.posts = [];
           console.log(error);
-        })
-        .then(() => {
-          // This code is always executed (after success or error).
-        });
+        });        
     },
     deletePost(id) {
       Api.delete(`/posts/${id}`)
@@ -54,6 +51,11 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    deleteAll() {
+      Api.delete("/posts").then(() => {
+        this.$router.go();
+      })
     },
     editPost(id) {
       Api.patch(`/posts/${id}`);
