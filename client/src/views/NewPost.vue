@@ -6,14 +6,22 @@
       <h1>Create new post</h1>
       <b-container>
         <form class="postform" action="/posts">
-          <b-form-input name="title" placeholder="Enter a title" id="titleId"></b-form-input>
-          <b-textarea name="text" placeholder="Write your text" id="textId"></b-textarea>
+          <b-form-input v-model="title" placeholder="Enter a title" id="titleId"></b-form-input>
+          <b-form-select v-model="selectedRoomId" :options="options" id="roomSelectId">
+            <template>
+              <option :value="null" disabled>
+                -- please select a room to post in --
+              </option>
+            </template>
+          </b-form-select>
+
+          <b-textarea v-model="text" placeholder="Write your text" id="textId"></b-textarea>
 
           <input
             type="submit"
             id="postbtn"
             class="form-group btn-success btn-lg"
-            @click="createPost()"
+            @click.stop.prevent="createPost()"
           />
         </form>
       </b-container>
@@ -30,28 +38,19 @@ export default {
   name: "Posts",
   data() {
     return {
+      title: '',
+      text: '',
+      selectedRoomId: null,
+      options: [],
       posts: [],
       users: []
     };
   },
   mounted() {
-    this.getPosts();
     this.getUsers();
+    this.getRooms();
   },
   methods: {
-    getPosts() {
-      Api.get("posts")
-        .then(response => {
-          this.posts = response.data.posts;
-        })
-        .catch(error => {
-          this.posts = [];
-          console.log(error);
-        })
-        .then(() => {
-          // This code is always executed (after success or error).
-        });
-    },
     getUsers() {
       Api.get("users")
         .then(response => {
@@ -60,16 +59,25 @@ export default {
         .catch(error => {
           this.users = [];
           console.log(error);
+        });        
+    },
+    getRooms() {
+      Api.get("rooms")      
+        .then(response => {
+          response.data.rooms.forEach(room => {
+            this.options.push({
+              value: room._id,
+              text: room.name
+            });
+          });
         })
-        .then(() => {
-          // This code is always executed (after success or error).
-        });
+        .catch(error => console.log(error));
     },
     getUser(id) {
       Api.get(`/users/${id}`)
         .then(response => {
           console.log(response.data.message);
-          var index = this.users.findIndex(users => users._id === id);
+          var index = this.users.findIndex(user => user._id === id);          
           this.users = response.data.users;
         })
         .catch(error => {
@@ -87,22 +95,18 @@ export default {
           console.log(error);
         });
     },
+    //we have to use model binding instead
+    //we have made it in a way that we can't rebind it
     createPost() {
-      var title = document.getElementById("titleId").value;
-      var text = document.getElementById("textId").value;
-      var randomPost = {
-        title: title,
-        text: text
-      };
-
-      Api.post("/posts", randomPost)
-        .then(response => {
-          this.posts.push(response.data);
-          console.log(data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      var newPost = {
+        title: this.title,
+        text: this.text,
+        roomId: this.selectedRoomId
+      };      
+      Api.post(`/rooms/${this.selectedRoomId}`, newPost)
+      .then(() => {
+        this.$router.push("/");
+      });
     }
   },
   components: {
@@ -137,5 +141,10 @@ h1 {
 #usernameId {
   width: 30em;
   margin: auto;
+}
+#roomSelectId {
+  width: 30em;
+  margin: auto;
+  margin-top: 10px;
 }
 </style>

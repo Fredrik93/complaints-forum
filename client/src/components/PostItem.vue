@@ -6,14 +6,16 @@
     <h3>{{ post.title}}</h3>
     {{ post.text }}
     <b-button type="button" class="close" @click="$emit('delete-post', post._id)">&times;</b-button>
-    <b-button type="button" @click="$emit('edit-post', post._id)">Edit</b-button>
+    <!-- <b-button type="button" @click="$emit('edit-post', post._id)">Edit</b-button>     -->
   </b-list-group-item>
 </template>
 
 <script>
+import { Api } from '@/Api'
+
 export default {
   name: "post-item",
-  props: ["post"]
+  props: ["post"]  
 };
 </script>
 

@@ -3,6 +3,8 @@
     <div class="jumbotron">
       <h1>Browse Rooms</h1>
     </div>
+
+    <b-button type="button" @click="deleteAll()">Delete All</b-button>    
     <b-list-group>
       <room-item v-for="room in rooms" :key="room._id" :room="room" @delete-room="deleteRoom"></room-item>
     </b-list-group>
@@ -47,6 +49,11 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    deleteAll() {
+      Api.delete("/rooms").then(() => {
+        this.$router.go();
+      });
     },
     createRoom() {
       var name = document.getElementById("nameId").value;
