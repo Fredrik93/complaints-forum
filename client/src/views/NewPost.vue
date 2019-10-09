@@ -1,7 +1,6 @@
 <template>
   <div class="col-md">
     <div id="post">
-      <h1>list of {{users.length}} users</h1>
 
       <h1>Create new post</h1>
       <b-container>
