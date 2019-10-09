@@ -6,7 +6,16 @@
       <b-container>
         <form class="postform" action="/posts">
           <b-form-input v-model="title" placeholder="Enter a title" id="titleId"></b-form-input>
-          <b-form-select v-model="selectedRoomId" :options="options" id="roomSelectId">
+
+          <b-form-select v-model="selectedUserId" :options="userOptions" id="userSelectId">
+            <template>
+              <option :value="null" disabled>
+                -- please select a user --
+              </option>
+            </template>
+          </b-form-select>
+
+              <b-form-select v-model="selectedRoomId" :options="options" id="roomSelectId">
             <template>
               <option :value="null" disabled>
                 -- please select a room to post in --
@@ -29,89 +38,90 @@
 </template>
 
 <script>
-import { Api } from "@/Api";
-import UserItem from "@/components/UserItem";
+import { Api } from '@/Api'
 
 export default {
-  props: "users",
-  name: "Posts",
+  props: 'users',
+  name: 'Posts',
   data() {
     return {
       title: '',
       text: '',
       selectedRoomId: null,
+      selectedUserId: null,
       options: [],
+      userOptions: [],
       posts: [],
       users: []
-    };
+    }
   },
   mounted() {
-    this.getUsers();
-    this.getRooms();
+    this.getUsers()
+    this.getRooms()
   },
   methods: {
     getUsers() {
-      Api.get("users")
+      Api.get('users')
         .then(response => {
-          this.users = response.data.users;
+          response.data.users.forEach(user => {
+            this.userOptions.push({
+              value: user._id,
+              text: user.username
+            })
+          })
         })
-        .catch(error => {
-          this.users = [];
-          console.log(error);
-        });        
+        .catch(error => console.log(error))
     },
     getRooms() {
-      Api.get("rooms")      
+      Api.get('rooms')
         .then(response => {
           response.data.rooms.forEach(room => {
             this.options.push({
               value: room._id,
               text: room.name
-            });
-          });
+            })
+          })
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
     },
     getUser(id) {
       Api.get(`/users/${id}`)
         .then(response => {
-          console.log(response.data.message);
-          var index = this.users.findIndex(user => user._id === id);          
-          this.users = response.data.users;
+          console.log(response.data.message)
+          var index = this.users.findIndex(user => user._id === id)
+          this.users = response.data.users
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
     deletePost(id) {
       Api.delete(`/posts/${id}`)
         .then(response => {
-          console.log(response.data.message);
-          var index = this.posts.findIndex(post => post._id === id);
-          this.posts.splice(index, 1);
+          console.log(response.data.message)
+          var index = this.posts.findIndex(post => post._id === id)
+          this.posts.splice(index, 1)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
-    //we have to use model binding instead
-    //we have made it in a way that we can't rebind it
+    // we have to use model binding instead
+    // we have made it in a way that we can't rebind it
     createPost() {
       var newPost = {
         title: this.title,
         text: this.text,
-        roomId: this.selectedRoomId
-      };      
+        roomId: this.selectedRoomId,
+        userId: this.selectedUserId
+      }
       Api.post(`/rooms/${this.selectedRoomId}`, newPost)
-      .then(() => {
-        this.$router.push("/");
-      });
+        .then(() => {
+          this.$router.push('/')
+        })
     }
-  },
-  components: {
-    UserItem
   }
-};
+}
 </script>
 
 <style >
@@ -141,9 +151,15 @@ h1 {
   width: 30em;
   margin: auto;
 }
+#userSelectId{
+  display: block;
+  width: 30em;
+ margin: auto;
+ margin-top: 0.2em;
+}
 #roomSelectId {
   width: 30em;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 0.2em;
 }
 </style>
