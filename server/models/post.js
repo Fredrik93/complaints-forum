@@ -7,6 +7,10 @@ var postSchema = new Schema({
     roomId: {
         type: Schema.Types.ObjectId,
         ref: 'room'
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     }
 });
 
