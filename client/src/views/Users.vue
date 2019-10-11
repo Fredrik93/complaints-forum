@@ -3,11 +3,11 @@
     <h1>List of {{ users.length }} users</h1>
     <form action="/users">
       <label for="username">Username :</label>
-      <input class="form-group" type="text" name="username" id="usernameId" />
-      <label for="age">Age :</label>
-      <input type="age" name="age" id="ageId" />
+      <input v-model="username" placeholder="Enter a username" id="usernameId" />
+      <label  for="age">Age :</label>
+      <input v-model="age" placeholder="Enter your age" id="ageId" />
       <b-button type="button" class="form-group" @click="createUser()">Create User</b-button>
-      <b-button type="button" class="form-group" @click="getUser('fredrik')">Get User</b-button>
+      <b-button type="button" class="form-group" @click="getUser()">Get User</b-button>
     </form>
     <b-list-group>
       <user-item v-for="user in users" :key="user._id" :user="user" @delete-user="deleteUser"></user-item>
@@ -23,6 +23,8 @@ export default {
   name: 'Users',
   data() {
     return {
+      username: '',
+      age: '',
       users: []
     }
   },
@@ -77,28 +79,19 @@ export default {
         })
     },
     createUser() {
-      var username = document.getElementById('usernameId').value
-      var age = document.getElementById('ageId').value
-      var randomUser = {
-        username: username,
-        age: age
+      var newUser = {
+        username: this.username,
+        age: this.age
       }
-      Api.post('/users', randomUser)
+      Api.post('/users', newUser)
         .then(response => {
           this.users.push(response.data)
         })
         .catch(error => {
           console.log(error)
         })
-    },
-    getRandomInt(max) {
-      return Math.floor(Math.random() * max)
-    },
-    getRandomName() {
-      var names = ['Mike', 'Fredrik', 'Moritz', 'Pete']
-      var index = this.getRandomInt(names.length)
-      return names[index]
     }
+
   },
   components: {
     UserItem
