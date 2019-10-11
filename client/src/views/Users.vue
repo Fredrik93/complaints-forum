@@ -51,9 +51,11 @@ export default {
         .then(reponse => {
           this.users = reponse.data.users
           var i
+          console.log(username)
           for (i = 0; i < this.users.length; i++) {
             if (this.users[i].username === username) {
               console.log(this.users[i].username)
+              this.$router.go()
               // return this.users[i] no idea if we need this
             }
           }
