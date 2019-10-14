@@ -25,10 +25,10 @@ export default {
     }
   },
   mounted() {
-    this.getPosts()
+    this.getPosts()    
   },
   methods: {
-    getPosts() {
+    getPosts() {      
       this.posts = this.room.posts;    
     },
     deletePost(id) {
