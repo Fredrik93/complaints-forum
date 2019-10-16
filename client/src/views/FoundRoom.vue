@@ -2,14 +2,14 @@
   <div class="rooms col-md">
     <div class="jumbotron">
       <h1>Search for a Rooms</h1>
-    </div>    
-    <b-list-group>
-      <room-item v-if="foundRoom != undefined" :room="foundRoom"></room-item>
-    </b-list-group>
+    </div>
     <form action="/rooms" id="findRoom">
       <input v-model="roomName" placeholder="Enter a room's name" id="roomNameId" />
       <b-button class="form-group" @click="getRoom()">Search Room</b-button>
     </form>
+     <b-list-group>
+      <room-item v-if="foundRoom != undefined" :room="foundRoom"></room-item>
+    </b-list-group>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       roomName: '',
-      rooms: [],      
+      rooms: [],
       foundRoom: undefined
     }
   },
@@ -43,10 +43,10 @@ export default {
     getRoom() {
       var foundRoomId
       for (var i = 0; i < this.rooms.length; i++) {
-        if (this.rooms[i].name === this.roomName) {          
+        if (this.rooms[i].name === this.roomName) {
           foundRoomId = this.rooms[i]._id
         }
-      }      
+      }
       Api.get(`/rooms/${foundRoomId}`)
         .then(response => {
           this.foundRoom = response.data

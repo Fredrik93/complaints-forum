@@ -39,11 +39,7 @@ export default {
         })
         .catch(error => {
           this.users = []
-
           console.log(error)
-        })
-        .then(() => {
-          // This code is always executed (after success or error).
         })
     },
     getUser(username) {
