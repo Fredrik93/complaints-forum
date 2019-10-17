@@ -80,22 +80,6 @@ export default {
       Api.delete('/rooms').then(() => {
         this.$router.go()
       })
-        .catch(error => {
-          console.log(error)
-        })
-    },
-    createRoom() {
-      var name = document.getElementById('nameId').value
-      var randomRoom = {
-        name: name
-      }
-      Api.post('/rooms', randomRoom)
-        .then(response => {
-          this.rooms.push(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
     }
   },
 
