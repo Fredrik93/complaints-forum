@@ -42,9 +42,6 @@ export default {
           this.rooms = [];
           console.log(error);
         })
-        .then(() => {
-          // This code is always executed (after success or error).
-        });
     },
     deleteRoom(id) {
       Api.delete(`/rooms/${id}`)
