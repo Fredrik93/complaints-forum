@@ -20,34 +20,33 @@
 </template>
 
 <script>
-import { Api } from "@/Api";
+import { Api } from '@/Api';
 
 export default {
-  name: "Rooms",
+  name: 'Rooms',
   data() {
     return {
       rooms: []
-    };
+    }
   },
   mounted() {
-    this.getRooms();
   },
   methods: {
     createRoom() {
-      var name = document.getElementById("nameId").value;
+      var name = document.getElementById('nameId').value
       var randomRoom = {
         name: name
-      };
-      Api.post("/rooms", randomRoom)
+      }
+      Api.post('/rooms', randomRoom)
         .then(response => {
-          this.rooms.push(response.data);
+          this.rooms.push(response.data)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
   }
-};
+}
 </script>
 
 <style >
