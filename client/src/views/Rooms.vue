@@ -4,7 +4,6 @@
       <h1>Browse Rooms</h1>
     </div>
     <form action="/rooms" id="findRoom">
-      <input v-model="roomName" placeholder="Enter a room's name" id="roomNameId" />
       <b-button class="form-group" @click="getRoom()">Search Room</b-button>
     </form>
     <b-button class="deleteButton" @click="deleteAll()">Delete All</b-button>
