@@ -61,9 +61,6 @@ export default {
 
           console.log(error)
         })
-        .then(() => {
-          // This code is always executed (after success or error).
-        })
     },
     deleteUser(id) {
       Api.delete(`/users/${id}`)

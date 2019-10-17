@@ -41,9 +41,6 @@ export default {
         .catch(error => {
           this.rooms = [];
           console.log(error);
-        })
-        .then(() => {
-          // This code is always executed (after success or error).
         });
     },
     deleteRoom(id) {

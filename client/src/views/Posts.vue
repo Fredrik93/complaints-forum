@@ -56,6 +56,9 @@ export default {
       Api.delete('/posts').then(() => {
         this.$router.go()
       })
+        .catch(error => {
+          console.log(error)
+        })
     },
     editPost(id) {
       Api.patch(`/posts/${id}`)
