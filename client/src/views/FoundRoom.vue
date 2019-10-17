@@ -51,6 +51,9 @@ export default {
         .then(response => {
           this.foundRoom = response.data
         })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
 

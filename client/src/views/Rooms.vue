@@ -81,6 +81,9 @@ export default {
       Api.delete('/rooms').then(() => {
         this.$router.go()
       })
+        .catch(error => {
+          console.log(error)
+        })
     },
     createRoom() {
       var name = document.getElementById('nameId').value

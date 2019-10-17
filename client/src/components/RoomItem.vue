@@ -51,6 +51,9 @@ export default {
       }).then(response => {
         this.$router.go();
       })
+        .catch(error => {
+          console.log(error)
+        })
     },
     createPost() {
       var title = document.getElementById('titleId').value
