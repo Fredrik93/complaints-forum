@@ -9,7 +9,6 @@
         v-for="post in posts"
         :key="post._id"
         :post="post"
-        @edit-post="editPost"
         @delete-post="deletePost"
       ></post-item>
     </b-list-group>
@@ -17,8 +16,8 @@
 </template>
 
 <script>
-import { Api } from '@/Api';
-import PostItem from '@/components/PostItem';
+import { Api } from '@/Api'
+import PostItem from '@/components/PostItem'
 
 export default {
   name: 'Posts',
