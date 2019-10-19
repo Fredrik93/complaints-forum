@@ -5,12 +5,7 @@
     </div>
     <b-button type="button" @click="deleteAll()">Delete All</b-button>
     <b-list-group>
-      <post-item
-        v-for="post in posts"
-        :key="post._id"
-        :post="post"
-        @delete-post="deletePost"
-      ></post-item>
+      <post-item v-for="post in posts" :key="post._id" :post="post" @delete-post="deletePost"></post-item>
     </b-list-group>
   </div>
 </template>
@@ -78,5 +73,11 @@ export default {
 #textId {
   width: 30em;
   height: 10em;
+}
+
+@media only screen and (max-width: 768px) {
+  [class*='col-'] {
+    width: 100%;
+  }
 }
 </style>
