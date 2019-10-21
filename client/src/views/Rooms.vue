@@ -42,29 +42,7 @@ export default {
     getRoom() {
       this.$router.push('FoundRoom')
     },
-    // getRoom() {
-    //   Api.get('rooms')
-    //     .then(response => {
-    //       this.rooms = response.data.rooms
-    //     })
-    //     .catch(error => {
-    //       this.rooms = []
-    //       console.log(error)
-    //     })
-    //   var foundRoomId
-    //   for (var i = 0; i < this.rooms.length; i++) {
-    //     if (this.rooms[i].name === this.roomName) {
-    //       console.log(this.rooms[i]._id)
-    //       foundRoomId = this.rooms[i]._id
-    //     }
-    //   }
-    //   Api.get(`/rooms/${foundRoomId}`)
-    //     .then(response => {
-    //       console.log('success' + response.data.name)
-    //       this.roomName = response
-    //       console.log('success2' + this.rooms)
-    //     })
-    // },
+  
     deleteRoom(id) {
       Api.delete(`/rooms/${id}`)
         .then(response => {
@@ -106,5 +84,12 @@ export default {
 }
 #findRoom {
   display: block
+}
+@media only screen and (max-width: 768px) {
+  [class*='col-'] {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
 }
 </style>
