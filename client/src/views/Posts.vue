@@ -77,6 +77,8 @@ export default {
 
 @media only screen and (max-width: 768px) {
   [class*='col-'] {
+    padding-left: 0;
+    padding-right: 0;
     width: 100%;
   }
 }
