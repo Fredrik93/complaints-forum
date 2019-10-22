@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 
 
 //Return all posts reversed
-router.get('/sorted', function (req, res, next) {
+router.get('/list', function (req, res, next) {
     Post.find(function (err, posts) {
         if (err) { return next(err); }
         if (posts === null) {

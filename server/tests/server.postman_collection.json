@@ -752,14 +752,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/api/posts/sorted",
+							"raw": "{{host}}/api/posts/list",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"posts",
-								"sorted"
+								"list"
 							]
 						}
 					},
