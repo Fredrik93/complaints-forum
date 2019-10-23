@@ -405,31 +405,6 @@
 					"response": []
 				},
 				{
-					"name": "Delete users post",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}/posts/{{userPost_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}",
-								"posts",
-								"{{userPost_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Update User",
 					"request": {
 						"method": "PATCH",
@@ -454,6 +429,31 @@
 								"api",
 								"users",
 								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete users post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/posts/{{userPost_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"posts",
+								"{{userPost_id}}"
 							]
 						}
 					},
@@ -555,9 +555,9 @@
 					"response": []
 				},
 				{
-					"name": "Delete AchievementBoard",
+					"name": "Get one achievementBoard",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -601,9 +601,9 @@
 					"response": []
 				},
 				{
-					"name": "Get one achievementBoard",
+					"name": "Delete AchievementBoard",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -720,29 +720,6 @@
 					"response": []
 				},
 				{
-					"name": "Delete post",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/api/posts/{{post_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"{{post_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Display sorted posts",
 					"request": {
 						"method": "GET",
@@ -760,29 +737,6 @@
 								"api",
 								"posts",
 								"list"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete all posts",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/api/posts/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								""
 							]
 						}
 					},
@@ -843,6 +797,52 @@
 								"api",
 								"posts",
 								"{{post_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/{{post_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{post_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all posts",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
 							]
 						}
 					},
@@ -956,52 +956,6 @@
 					"response": []
 				},
 				{
-					"name": "Delete one room",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/api/rooms/{{room_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"rooms",
-								"{{room_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete all rooms",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/api/rooms/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"rooms",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Replace one room",
 					"request": {
 						"method": "PUT",
@@ -1107,6 +1061,52 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete one room",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/rooms/{{room_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"rooms",
+								"{{room_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all rooms",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/rooms/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"rooms",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1204,29 +1204,6 @@
 					"response": []
 				},
 				{
-					"name": "Delete Admin",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/api/admins/{{admin_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"admins",
-								"{{admin_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Update Admin",
 					"request": {
 						"method": "PATCH",
@@ -1271,6 +1248,29 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"userName\":\"ReplacedTheWholeThing\",\n\t\"age\": 26,\n\t\"email\": \"fredrikullman@live.se\",\n\t\"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/admins/{{admin_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"admins",
+								"{{admin_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{host}}/api/admins/{{admin_id}}",
@@ -1393,29 +1393,6 @@
 					"response": []
 				},
 				{
-					"name": "Delete camel",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"username\":\"fredrik\",\n\"age\":26,\n\"email\":\"lalala\",\n\"posts\": [],\n\"achievements\":[]\n\n}"
-						},
-						"url": {
-							"raw": "{{host}}/api/camels/{{camel_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"camels",
-								"{{camel_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Get camels",
 					"event": [
 						{
@@ -1474,6 +1451,29 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"position\": \"2\",\n\t\"color\": \"newestColor\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/camels/{{camel_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"camels",
+								"{{camel_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete camel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"username\":\"fredrik\",\n\"age\":26,\n\"email\":\"lalala\",\n\"posts\": [],\n\"achievements\":[]\n\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/camels/{{camel_id}}",
@@ -1587,29 +1587,6 @@
 					"response": []
 				},
 				{
-					"name": "Delete one instance",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/api/postInstances/{{postInstance_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"postInstances",
-								"{{postInstance_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Replace one instance",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1660,6 +1637,29 @@
 					],
 					"path": [
 						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete one instance",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/postInstances/{{postInstance_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"postInstances",
+						"{{postInstance_id}}"
 					]
 				}
 			},
